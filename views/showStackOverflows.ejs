@@ -1,0 +1,17 @@
+<h1>Show StackOverflow questions not answered</h1>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <th>user id</th>
+       
+    </thead>
+    <tbody>
+        <% for(overflow of overflows){%> 
+        <tr> 
+            <td> <%= overflow.owner.user_id %></td> 
+            
+        </tr>
+        <% } %>
+    </tbody>
+</table>
+<pre><%= JSON.stringify(overflows,null,5) %> </pre>
