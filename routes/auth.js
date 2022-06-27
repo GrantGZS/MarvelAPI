@@ -79,11 +79,12 @@ router.post('/signup',
         const encrypted = await bcrypt.hash(passphrase, saltRounds);
 
         // check to make sure that username is not already taken!!
-        const duplicates = await User.find({username})
+        const duplicates = await User.find({username:username})
         
         if (duplicates.length>0){
           // it would be better to render a page with an error message instead of this plain text response
-          res.send("username has already been taken, please go back and try another username")
+          ///res.send("username has already been taken, please go back and try another username")
+          res.redirect('/login')
         }else {
           // the username has not been taken so create a new user and store it in the database
           const user = new User(
