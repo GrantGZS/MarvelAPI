@@ -6,6 +6,10 @@ var logger = require('morgan');
 const layouts = require("express-ejs-layouts");
 const axios=require('axios');
 const auth=require('./routes/auth');
+
+//crypto hash
+const crypto=require('crypto');
+
 const session = require("express-session"); 
 const MongoDBStore = require('connect-mongodb-session')
 (session);
@@ -179,6 +183,26 @@ app.get('/myApiDemo',
     res.locals.repos = response.data
     res.render('showRepos')
     
+  })
+  ///Final project app
+  //function character(){
+    //let urlParameters=new URLSearchParams(window.location.search),
+
+  //}
+  app.get('/Marvel',
+  async (req,res,next) =>{
+    var baseURL="http://gateway.marvel.com/v1/public/comics";
+    var timestamp=new Date().getTime();
+    var publicKey="8d721bdf4a603c8f544ffc2a28e4aacc";
+    log (currentValue.log || []).concat([song])
+    var privateKey = process.env.privateKey;
+    //var privateKey="d42519eca3d77bc6e3125b239c4c3c9a0a3c31dd";
+    let hash=crypto.createHash('md5').update(timestamp+publicKey+privateKey).digest("hex");
+    console.dir(hash);
+    const hero=req.params.body;
+    const response=await axios.get()
+    console.dir(response.data.length)
+    res.render('Marvel')
   })
 
 

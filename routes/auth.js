@@ -69,28 +69,32 @@ router.post('/login',
     }
   })
 
+
 router.post('/signup',
   async (req,res,next) =>{
     try {
-      const {username,passphrase,passphrase2,age} = req.body
+      const {username,passphrase,passphrase2,age,email,pic} = req.body
       if (passphrase != passphrase2){
         res.redirect('/login')
       }else {
         const encrypted = await bcrypt.hash(passphrase, saltRounds);
 
         // check to make sure that username is not already taken!!
-        const duplicates = await User.find({username:username})
-        
+        const duplicates = await User.find({username})
+        console.log(duplicates)
         if (duplicates.length>0){
+          console.log('in the if')
           // it would be better to render a page with an error message instead of this plain text response
           ///res.send("username has already been taken, please go back and try another username")
-          res.redirect('/login')
+          res.render('UserNameTaken')
         }else {
           // the username has not been taken so create a new user and store it in the database
           const user = new User(
             {username:username,
              passphrase:encrypted,
-             age:age
+             age:age,
+             email:email,
+             pic:pic
             })
           
           await user.save()
