@@ -7,39 +7,45 @@
      h1{font-family: 'Josefin Sans', sans-serif;}
       
      </style>
-    <h1>Hello   </h1>
+    <h1>Creator page   </h1>
     
 
 </head>
 <body>
     <hr>
-    <h1>welcome!</h1>
     
     
-    <form method='post' action='/Marvel'>
-        <h1>Enter hero name:</h1>
-        <input type="text" name="hero">
+    <form method='post' action='/MarvelComics'>
+        <h1>Enter comics id:</h1>
+        <input type="text" name="comicID">
         <input type="submit">
     </form>
     <% if (resultData==null){ %>
         
         <%= JSON.stringify(resultData) %>
         <hr>
-        No character to display
+        No comics to display
     <% }else{ %>
+        
         <hr>
-       <h1>Search result of <%= resultData[0].name %> </h1>
-       <ul>
+       
+       <ul class='creator list'>
         <% for(rd of resultData) {%>
-           <li> <%= rd.name %><br>
-            <%= rd.description %><br>
-           
-            
-            <img src="<%= rd.thumbnail.path %>/landscape_medium.jpg" width="300" alt="heroImg"><hr>
-            <a href="/addCharItem/<%= rd.id %>/<%= rd.name %>"> Add</a>
+           <li>
+                <h1><%= rd.title %></h1>
+                    <%= rd.description%> 
+                    <%= rd.id %> 
+                    <!-- <%= rd.resourceURI %>  -->
+                <hr>
+
+               <img src="<%= rd.thumbnail.path %>/landscape_medium.jpg" width="300" alt="comicImg">
+               <a href="/addChar/<%= rd.id %>"> Add</a>
+            </li>
             <hr>
          <% } %>
        </ul>
+
+
     
     <%} %>
 </body>

@@ -86,6 +86,7 @@ router.post('/signup',
           console.log('in the if')
           // it would be better to render a page with an error message instead of this plain text response
           ///res.send("username has already been taken, please go back and try another username")
+          res.locals.username=username;
           res.render('UserNameTaken')
         }else {
           // the username has not been taken so create a new user and store it in the database

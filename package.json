@@ -21,6 +21,8 @@
     "get-google-fonts": "^1.2.2",
     "google": "^2.1.0",
     "http-errors": "~1.6.3",
+    "marvel-api": "^1.1.0",
+    "marvel-api-hash-generator": "^1.0.3",
     "mongoose": "^6.4.0",
     "morgan": "~1.9.1"
   }

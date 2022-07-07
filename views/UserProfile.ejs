@@ -1,0 +1,16 @@
+<h1>User profile page</h1>
+
+<h2> username: <%= user.username %></h2>
+<h2> age: <%= user.age %></h2>
+<h2> email: <%= user.email %></h2>
+<h2>favorite heros:</h2>
+<ul>
+    <% for (hero of user.favHeros){%>
+        <li><%= hero.name %><%= hero.description %>   <br> 
+            <%= hero.id %>
+        </li>
+    <% } %>
+</ul>
+
+
+

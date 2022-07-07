@@ -11,32 +11,46 @@
   <body class="container">
     <nav class="navbar navbar-expand-lg bg-secondary">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/Marvel">Navbar</a>
+        <a class="navbar-brand" href="/MarvelMain">Main</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/Marvel">Home</a>
+              <a class="nav-link active" aria-current="page" href="/Marvel">Character</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
+              <a class="nav-link" href="/MarvelComics">Comics</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/creators">Creators</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropdown
+                Profile
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li><a class="dropdown-item" href="/UserProfile">Your profile</a></li>
+                <li><a class="dropdown-item" href="/UserTeam">Build your team</a></li>
+                <!-- <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Edit your profile</a></li> -->
               </ul>
             </li>
             <li class="nav-item">
               <a class="nav-link disabled">Disabled</a>
             </li>
+            <% if (!loggedIn) {%>
+              <li class="nav-item">
+                <a class="nav-link" href="/login">Login/Signup</a>
+              </li>
+              <% } else { %>
+              
+                
+                <li class="nav-item">
+                  <a class="nav-link" href="/logout">Logout <%= username %></a>
+                </li>
+              <% } %>
           </ul>
           <form class="d-flex" role="search">
             <input class="form-control me-2 bg-secondary" type="search" placeholder="Search" aria-label="Search">

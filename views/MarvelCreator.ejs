@@ -1,0 +1,71 @@
+
+
+<head class="p-3 mb-2 bg-dark text-warning">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <style>
+     h1{font-family: 'Josefin Sans', sans-serif;}
+      
+     </style>
+    <h1>Creator page   </h1>
+    
+
+</head>
+<body>
+    <hr>
+    <h1>welcome!</h1>
+
+
+    
+    
+    <form method='post' action='/creators'>
+        <h1>Enter creator name:</h1>
+        <input type="text" name="creator">
+        <input type="submit">
+    </form>
+    <% if (resultData==null){ %>
+        
+        <%= JSON.stringify(resultData) %>
+        <hr>
+        No character to display
+    <% }else{ %>
+        
+        <hr>
+       
+       <ul class='creator list'>
+        <% for(rd of resultData) {%>
+           <li>
+                <h1><%= rd.firstName %>
+                    <%= rd.lastName %> 
+                    <%= rd.id %> </h1><br>
+           <!-- <img src="<%= rd.thumbnail.path %>/landscape_medium.jpg" width="300" alt="heroImg"> -->
+            <ul class='comics list' style=" list-style-type: square;padding-bottom: 0;">
+                <% if (rd.comics.items.length > 10){ %>
+                    
+                  <% for (let i=0; i < 10; i++) { %>
+                    <li style="margin-left:2em">
+                        <%= rd.comics.items[i].name %>
+                        <a href=" <%= rd.comics.items[i].resourceURI %>?<%= userKey %>"><%= rd.comics.items[i].resourceURI %> userKey?</a>
+                        <br>
+
+                    </li>
+                 <% } %>
+                 <hr>
+                 <% }else{ %>
+                    
+                    <% for (let i=0; i < rd.comics.items.length; i++) { %>
+                        <li style="margin-left:2em">
+                            <%= rd.comics.items[i].name %><br>
+                        </li>
+                     <% } %>
+                <% } %>
+            </ul>
+            </li>
+            <hr>
+         <% } %>
+       </ul>
+
+
+    
+    <%} %>
+</body>

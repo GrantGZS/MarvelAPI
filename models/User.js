@@ -8,7 +8,10 @@ var userSchema = Schema( {
   passphrase: String,
   age: String,
   email: String,
-  pic: String
+  pic: String,
+  favHeros: Array,  
+  //favComics:{type:Schema.Types.ObjectId, ref:'Comics'}
+  
 
 } );
 
