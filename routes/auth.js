@@ -95,7 +95,8 @@ router.post('/signup',
              passphrase:encrypted,
              age:age,
              email:email,
-             pic:pic
+             pic:pic,
+             favHeros:null
             })
           
           await user.save()

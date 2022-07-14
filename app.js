@@ -430,6 +430,24 @@ res.locals.userKey=userKey;
   }
   )
 
+  app.get('/deleteCharItem/:itemId/:itemName',
+  isLoggedIn,
+  async(req,res,next) =>{
+    try{
+    const charId=req.params.itemId;
+    const user=res.locals.user;
+    //await Character.deleteOne({_id:charId});
+    const index=user.favHeros.findIndex(element => element.name===req.params.itemName);
+    user.favHeros.splice(index,index+1);
+    res.locals.user=user;
+    res.render('UserProfile');    
+    
+   }catch(e){
+      next(e);
+    }
+   }
+   )
+
 
 
 

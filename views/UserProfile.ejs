@@ -8,6 +8,7 @@
     <% for (hero of user.favHeros){%>
         <li><%= hero.name %><%= hero.description %>   <br> 
             <%= hero.id %>
+            <a href="/deleteCharItem/<%= hero.id %>/<%= hero.name %>"> Delete</a>
         </li>
     <% } %>
 </ul>
