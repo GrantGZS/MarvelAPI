@@ -5,29 +5,41 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <style>
      h1{font-family: 'Josefin Sans', sans-serif;}
+     @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+  .marvelfont{
+    font-family:"Bebas Neue",sans-serif;
+    font-size:40px;
+    color: rgb(107, 55, 55);
+    text-align: center;
+  }
+  .center {
+  text-align: center;
+}
       
      </style>
-    <h1>Creator page   </h1>
+    <h1 class="marvelfont">Creator search   </h1>
     
 
 </head>
 <body>
     <hr>
-    <h1>welcome!</h1>
+    <h1 class="marvelfont">welcome!</h1>
 
 
     
     
     <form method='post' action='/creators'>
-        <h1>Enter creator name:</h1>
+        <h1 class="marvelfont">Enter creator name:</h1>
+        <div class="center">
         <input type="text" name="creator">
         <input type="submit">
+    </div>
     </form>
     <% if (resultData==null){ %>
         
-        <%= JSON.stringify(resultData) %>
+        <!-- <%= JSON.stringify(resultData) %> -->
         <hr>
-        No character to display
+        <h1 class="marvelfont">No character to display</h1>
     <% }else{ %>
         
         <hr>
@@ -35,7 +47,7 @@
        <ul class='creator list'>
         <% for(rd of resultData) {%>
            <li>
-                <h1><%= rd.firstName %>
+                <h1 class="marvelfont"><%= rd.firstName %>
                     <%= rd.lastName %> 
                     <%= rd.id %> </h1><br>
            <!-- <img src="<%= rd.thumbnail.path %>/landscape_medium.jpg" width="300" alt="heroImg"> -->
@@ -44,19 +56,22 @@
                     
                   <% for (let i=0; i < 10; i++) { %>
                     <li style="margin-left:2em">
+                        <h2 class="marvelfont">
                         <%= rd.comics.items[i].name %>
                         <a href=" <%= rd.comics.items[i].resourceURI %>?<%= userKey %>"><%= rd.comics.items[i].resourceURI %> userKey?</a>
                         <br>
-
+                        </h2>
                     </li>
                  <% } %>
                  <hr>
                  <% }else{ %>
                     
                     <% for (let i=0; i < rd.comics.items.length; i++) { %>
+                        <h2 class="marvelfont">
                         <li style="margin-left:2em">
                             <%= rd.comics.items[i].name %><br>
                         </li>
+                    </h2>
                      <% } %>
                 <% } %>
             </ul>

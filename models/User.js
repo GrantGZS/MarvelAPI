@@ -10,6 +10,7 @@ var userSchema = Schema( {
   email: String,
   pic: String,
   favHeros: Array,  
+  favComics:Array,
   //favComics:{type:Schema.Types.ObjectId, ref:'Comics'}
   
 

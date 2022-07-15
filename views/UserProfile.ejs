@@ -1,17 +1,49 @@
-<h1>User profile page</h1>
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+ body,html{
+  height: 100%;
+}
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+  .marvelfont{
+    font-family:"Bebas Neue",sans-serif;
+    font-size:40px;
+    color: rgb(107, 55, 55);
+    text-align: center;
+  }
+</style> 
+</head>
+<body>
+<h1 class='marvelfont'>User profile page</h1>
 
-<h2> username: <%= user.username %></h2>
-<h2> age: <%= user.age %></h2>
-<h2> email: <%= user.email %></h2>
-<h2>favorite heros:</h2>
-<ul>
+<h2 class='marvelfont'> username: <%= user.username %></h2>
+<h2 class='marvelfont'> age: <%= user.age %></h2>
+<h2 class='marvelfont'> email: <%= user.email %></h2>
+<h2 class='marvelfont'>favorite heros:</h2>
+<div class="bg"></div>
+<ul class="heroList">
     <% for (hero of user.favHeros){%>
-        <li><%= hero.name %><%= hero.description %>   <br> 
+        <li><h3 class='marvelfont'><%= hero.name %><%= hero.description %>   <br> 
             <%= hero.id %>
-            <a href="/deleteCharItem/<%= hero.id %>/<%= hero.name %>"> Delete</a>
+            <a href="/deleteCharItem/<%= hero.id %>/<%= hero.name %>"> Delete</a></h3>
         </li>
     <% } %>
 </ul>
+<h2 class='marvelfont'>favorite comics:</h2>
+<ul class="comicsList">
+    <% for (comics of user.favComics){%>
+        <li><h3 class='marvelfont'><%= comics.name %><%= comics.resourceURI %>   <br> 
+            <%= comics.id %>
+            <a href="/deleteComicsItem/<%= comics.id %>/<%= comics.name %>"> Delete</a></h3>
+        </li>
+    <% } %>
+</ul>
+
+</body>
+
+</html>
 
 
 

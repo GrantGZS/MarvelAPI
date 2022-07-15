@@ -1,14 +1,23 @@
 <!DOCTYPE html>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+  .marvelfont{
+    font-family:"Bebas Neue",sans-serif;
+    font-size:40px;
+    color: rgb(107, 55, 55);
+    text-align: center;
+  }
+</style>
 <html>
   <head>
-    <title>Everything about Marvel app</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     <link rel='stylesheet' href='/stylesheets/style.css' />
 
     
   </head>
-  <body class="container">
+  <body class="container" style="background:grey;">
+    
     <nav class="navbar navbar-expand-lg bg-secondary">
       <div class="container-fluid">
         <a class="navbar-brand" href="/MarvelMain">Main</a>
@@ -37,9 +46,6 @@
                 <li><a class="dropdown-item" href="#">Edit your profile</a></li> -->
               </ul>
             </li>
-            <li class="nav-item">
-              <a class="nav-link disabled">Disabled</a>
-            </li>
             <% if (!loggedIn) {%>
               <li class="nav-item">
                 <a class="nav-link" href="/login">Login/Signup</a>
@@ -52,13 +58,14 @@
                 </li>
               <% } %>
           </ul>
-          <form class="d-flex" role="search">
+          <!-- <form class="d-flex" role="search">
             <input class="form-control me-2 bg-secondary" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success bg-danger font-size: 2rem" type="submit">Search</button>
-          </form>
+          </form> -->
         </div>
       </div>
     </nav>
+    <p class="marvelfont">Everything about Marvel app</p>
     <%- body %>
   </body>
 </html>

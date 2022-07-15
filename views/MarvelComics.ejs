@@ -5,9 +5,18 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <style>
      h1{font-family: 'Josefin Sans', sans-serif;}
-      
+     @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+  .marvelfont{
+    font-family:"Bebas Neue",sans-serif;
+    font-size:40px;
+    color: rgb(107, 55, 55);
+    text-align: center;
+  }
+  .center {
+  text-align: center;
+}
      </style>
-    <h1>Creator page   </h1>
+    <h1>Comics search  </h1>
     
 
 </head>
@@ -16,29 +25,31 @@
     
     
     <form method='post' action='/MarvelComics'>
-        <h1>Enter comics id:</h1>
+        <h1 class="marvelfont">Enter comics id:</h1>
+        <div class="center">
         <input type="text" name="comicID">
         <input type="submit">
+        </div>
     </form>
     <% if (resultData==null){ %>
-        
-        <%= JSON.stringify(resultData) %>
         <hr>
-        No comics to display
+        <h1 class="marvelfont">No comics to display</h1>
     <% }else{ %>
         
         <hr>
        
-       <ul class='creator list'>
+       <ul class='comics list'>
         <% for(rd of resultData) {%>
-           <li>
-                <h1><%= rd.title %></h1>
+           <li class="marvelfont">
+                <h1 class="marvelfont"><%= rd.title %>
                     <%= rd.description%> 
                     <%= rd.id %> 
                     <!-- <%= rd.resourceURI %>  -->
+                </h1>
                 <hr>
-
-               <img src="<%= rd.thumbnail.path %>/landscape_medium.jpg" width="300" alt="comicImg">
+                
+               <img src="<%= rd.thumbnail.path %>/landscape_medium.jpg" width="300" alt="comicImg" class="center">
+               <h1 class="marvelfont"><a href="/addComicsItem/<%= rd.id %>/<%= rd.title %>"> Add</a></h1>
                
             </li>
             <hr>

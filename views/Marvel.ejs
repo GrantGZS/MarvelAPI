@@ -4,34 +4,46 @@
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap" rel="stylesheet">
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <style>
-     h1{font-family: 'Josefin Sans', sans-serif;}
+     /* h1{font-family: 'Josefin Sans', sans-serif;} */
+     @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+  .marvelfont{
+    font-family:"Bebas Neue",sans-serif;
+    font-size:40px;
+    color: rgb(107, 55, 55);
+    text-align: center;
+  }
+  .center {
+  text-align: center;
+}
       
      </style>
-    <h1>Hello   </h1>
+    <h1 class="marvelfont">Hello   </h1>
     
 
 </head>
-<body>
+<body >
     <hr>
-    <h1>welcome!</h1>
+    <h1 class="marvelfont">welcome!</h1>
     
     
     <form method='post' action='/Marvel'>
-        <h1>Enter hero name:</h1>
-        <input type="text" name="hero">
+        <h1 class="marvelfont">Enter hero name:</h1>
+      <div class="center">
+        <input type="text" name="hero" text-align="center">
         <input type="submit">
+      </div>
     </form>
     <% if (resultData==null){ %>
         
-        <%= JSON.stringify(resultData) %>
+        <!-- <%= JSON.stringify(resultData) %> -->
         <hr>
-        No character to display
+        <h1 class="marvelfont">No character to display</h1>
     <% }else{ %>
         <hr>
-       <h1>Search result of <%= resultData[0].name %> </h1>
+       <h1 class="marvelfont">Search result of <%= resultData[0].name %> </h1>
        <ul>
         <% for(rd of resultData) {%>
-           <li> <%= rd.name %><br>
+           <li class="marvelfont"> <%= rd.name %><br>
             <%= rd.description %><br>
            
             

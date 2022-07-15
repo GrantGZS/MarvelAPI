@@ -4,6 +4,8 @@ const ObjectId = Schema.Types.ObjectId;
 const Mixed = Schema.Types.Mixed;
 
 var comicsSchema = Schema( {
+   userId: {type:Schema.Types.ObjectId, ref:'User'},
+   id:String,
    name:String,
    resourceURI:String
 } );

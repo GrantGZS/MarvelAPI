@@ -18,7 +18,8 @@ const MongoDBStore = require('connect-mongodb-session')
 //  Loading JSON datasets
 // *********************************************************** //
 const courses = require('./public/data/courses20-21.json')
-const Characters =require('./models/Character')
+
+
 // *********************************************************** //
 //  Loading models
 // *********************************************************** //
@@ -333,9 +334,9 @@ app.get('/showMarvel',
     //res.json(result);
     //console.dir(result.data[0].id);
     res.locals.resultData=result.data;
-    console.log(
-      " resultData updated "+res.locals.resultData.length
-    )
+    // console.log(
+    //   " resultData updated "+res.locals.resultData.length
+    // )
     //.then(console.log)
     //.fail(console.error)
      
@@ -374,7 +375,6 @@ res.render('MarvelCreator')
    console.log(privateKey);
    const publicKey = '8d721bdf4a603c8f544ffc2a28e4aacc';
    const hashValue = getApiHash(timeStamp, privateKey, publicKey);
-
 const requestConstantCreators = 'https://gateway.marvel.com/v1/public/creators?';
 const userKey=`ts=${timeStamp}&apikey=${publicKey}&hash=${hashValue}`;
 console.dir(userKey);
@@ -391,15 +391,15 @@ res.locals.userKey=userKey;
    res.locals.resultData=result.data;
    console.dir(res.locals);
    try{
-    const charName=req.body.charName;
-    const resourceURI=req.body.resourceURI;
-    const comicObj = {
-      userId:res.locals.user._id,
-      charName:charName,
-      resourceURI:resourceURI
-    }
-    const newComic=new Comics(comicObj);
-    await newComic.save();
+    // const charName=req.body.charName;
+    // const resourceURI=req.body.resourceURI;
+    // const comicObj = {
+    //   userId:res.locals.user._id,
+    //   charName:charName,
+    //   resourceURI:resourceURI
+    // }
+    // const newComic=new Comics(comicObj);
+    // await newComic.save();
   }catch(e){
     next(e);
   }
@@ -412,7 +412,9 @@ res.locals.userKey=userKey;
    try{
    const charId=req.params.itemId;
    const charName=req.params.itemName;
+   const userId=res.locals.user._id;
    const charObj={
+        userId:userId,
         id:charId,
         name:charName
    }
@@ -435,10 +437,55 @@ res.locals.userKey=userKey;
   async(req,res,next) =>{
     try{
     const charId=req.params.itemId;
-    const user=res.locals.user;
-    //await Character.deleteOne({_id:charId});
+    const user=res.locals.user;  
+    await Character.deleteOne({id:charId});
     const index=user.favHeros.findIndex(element => element.name===req.params.itemName);
     user.favHeros.splice(index,index+1);
+    res.locals.user=user;
+    res.render('UserProfile');    
+    
+   }catch(e){
+      next(e);
+    }
+   }
+   )
+
+   //add&delete from favComics
+   app.get('/addComicsItem/:itemId/:comicTitle',
+   isLoggedIn,
+   async(req,res,next) =>{
+     try{
+     const comicId=req.params.itemId;
+     const comicName=req.params.comicTitle;
+     const userId=res.locals.user._id;
+     const comicsObj={
+          userId:userId,
+          id:comicId,
+          name:comicName
+     }
+     const comicsItem=new Comics(comicsObj);
+     //await Character.insertOne(charObj);
+     await comicsItem.save();
+     const user=res.locals.user;
+     user.favComics.push(comicsItem);
+     res.locals.user=user;
+     res.render('UserProfile');    
+     
+    }catch(e){
+       next(e);
+     }
+    }
+    )
+
+    app.get('/deleteComicsItem/:itemId/:itemTitle',
+  isLoggedIn,
+  async(req,res,next) =>{
+    try{
+    const comicsId=req.params.itemId;
+    const user=res.locals.user;  
+    await Comics.deleteOne({id:comicsId});
+    const index=user.favComics.findIndex(element => element.id===req.params.itemId);
+    user.favComics.splice(index,index+1);
     res.locals.user=user;
     res.render('UserProfile');    
     
