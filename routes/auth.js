@@ -96,8 +96,8 @@ router.post('/signup',
              age:age,
              email:email,
              pic:pic,
-             favHeros:null,
-             favComics:null
+             //favHeros:null,
+             //favComics:null
             })
           
           await user.save()
