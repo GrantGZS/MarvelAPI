@@ -40,10 +40,30 @@ npm install
 Start the project with
 ``` bash
 bash startup.sh
+```
 
-## Authors
+## Author
 
 Grant Gu
 
+### Dependecies
+```
+"axios": "^0.27.2",
+"bcrypt": "^5.0.1",
+"cookie-parser": "~1.4.4",
+"debug": "~2.6.9",
+"ejs": "~2.6.1",
+"express": "~4.16.1",
+"express-ejs-layouts": "^2.5.1",
+"express-session": "^1.17.3",
+"http-errors": "~1.6.3",
+"mongoose": "^6.4.1",
+"morgan": "~1.9.1"
+```
 
+### Future plans
+* 1.I will work on redirecting the user to Marvel.com when the specific comics/characters are clicked
+* 2.I will work on moving this app to a mobile app such that user can search for marvel info on their phone
+* 3.I will work on creating cooler layout page such that I have a Marvel heros image flashing on the background
+* 4.Probably I could embed a youtube video to introduce this character on character search page
 
